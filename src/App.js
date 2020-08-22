@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Bar, Line, Pie } from "react-chartjs-2";
 import Barcode from "react-barcode";
 import QRCode from "react-qr-code";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import './App.css';
 
@@ -82,8 +84,35 @@ const App = () => {
     ],
   });
 
+  const sendNotification = (msg = "", mode) => {
+    toast.success(msg, {position: "bottom-left"})
+    // switch (mode) {
+    //   case "success":
+    //     toast.success(msg);
+    //     break;
+
+    //   case "warning":
+    //     toast.warning(msg);
+    //     break;
+
+    //   case "error":
+    //     toast.error(msg);
+    //     break;
+
+    //   case "dark":
+    //     toast.dark(msg);
+    //     break;
+
+    //   default:
+    //     toast.info(msg);
+    //     break;
+    // }
+  }
+
   return (
     <div className="App">
+      <button onClick={() => sendNotification("hello")}>toast</button>
+      <ToastContainer />
       <Barcode
         value="some data"
         text="this barcode"
